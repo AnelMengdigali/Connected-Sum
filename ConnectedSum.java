@@ -88,31 +88,3 @@ class Result {
     }
     
 }
-
-public class Solution {
-    public static void main(String[] args) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
-        
-        int n = Integer.parseInt(bufferedReader.readLine().trim());
-        
-        int edgesCount = Integer.parseInt(bufferedReader.readLine().trim());
-        
-        List<String> edges = IntStream.range(0, edgesCount).mapToObj(i -> {
-            try {
-                return bufferedReader.readLine();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-        })
-        .collect(toList());
-        
-        int result = Result.connectedSum(n, edges);
-        
-        bufferedWriter.write(String.valueOf(result));
-        bufferedWriter.newLine();
-        
-        bufferedReader.close();
-        bufferedWriter.close();
-    }
-}
